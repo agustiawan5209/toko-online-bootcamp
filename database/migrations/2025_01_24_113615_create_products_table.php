@@ -14,6 +14,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('stock')->default(0);
             $table->string('image')->nullable();
+            $table->decimal('price', 10, 2); // Harga produk
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Relasi ke kategori
             $table->timestamps();
         });
