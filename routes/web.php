@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('products', function(){
-    return view('products');
-});
-Route::get('cart', function(){
-    return view('cart');
-});
-Route::get('checkout', function(){
-    return view('checkout');
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/cart', function () {
+    // Ganti dengan data keranjang Anda
+    $cartItems = [];
+    return view('cart', compact('cartItems'));
 });
