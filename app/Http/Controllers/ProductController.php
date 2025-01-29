@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product; // Pastikan model Product sudah dibuat
 
@@ -11,13 +12,15 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(5);
-        return view('products.index', compact('products'));
+        return view('page.admin.product.index', compact('products'));
     }
 
     // Form untuk menambahkan produk baru
     public function create()
     {
-        return view('products.create');
+        return view('page.admin.product.create', [
+            'categories'=> Category::all(),
+        ]);
     }
 
     // Simpan produk baru
@@ -26,25 +29,36 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'stock'=> 'required|integer',
+            'description' => 'nullable|string',
+
         ]);
 
-        Product::create($request->all());
+        $data = $request->all();
 
-        return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan');
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $data['image'] = $imagePath;
+        }
+
+        Product::create($data);
+
+        return redirect()->route('product.index')->with('success', 'Produk berhasil ditambahkan');
     }
 
     // Tampilkan detail produk
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('products.show', compact('product'));
+        return view('products.show', compact('products'));
     }
 
     // Form untuk mengedit produk
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('products.edit', compact('product'));
+        return view('page.admin.product.edit', compact('products'));
     }
 
     // Update data produk
@@ -58,7 +72,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->update($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Produk berhasil diperbarui');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil diperbarui');
     }
 
     // Hapus produk
@@ -67,6 +81,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil dihapus');
     }
 }
