@@ -51,14 +51,15 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('products.show', compact('products'));
+        return view('products.show', compact('product'));
     }
 
     // Form untuk mengedit produk
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('page.admin.product.edit', compact('products'));
+        $categories = Category::all();
+        return view('page.admin.product.edit', compact('product', 'categories'));
     }
 
     // Update data produk
