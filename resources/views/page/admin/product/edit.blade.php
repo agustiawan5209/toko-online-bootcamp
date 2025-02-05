@@ -15,27 +15,27 @@
 
                         <div>
                             <x-input-label for="name" :value="__('Nama Product')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
+                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $product->name }}" required autofocus />
                         </div>
 
                         <div class="mt-4">
                             <x-input-label for="description" :value="__('Deskripsi Product')" />
-                            <x-text-input type="text" id="description" class="block mt-1 w-full" rows="3" name="description" required></x-text-input>
+                            <x-text-input type="text" id="description" class="block mt-1 w-full" rows="3" value="{{ $product->description }}" name="description" required></x-text-input>
                         </div>
 
                         <div class="mt-4">
                             <x-input-label for="stock" :value="__('Stok Product')" />
-                            <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" required />
+                            <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" value="{{ $product->stock }}" required />
                         </div>
 
                         <div class="mt-4">
                             <x-input-label for="image" :value="__('Gambar Product')" />
-                            <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" required />
+                            <x-text-input id="image" class="block mt-1 w-full" type="file" name="image"  />
                         </div>
 
                         <div class="mt-4">
                             <x-input-label for="price" :value="__('Harga Product')" />
-                            <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" required />
+                            <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" value="{{ $product->price }}" required />
                         </div>
 
                         <div class="mt-4">
@@ -43,7 +43,7 @@
                             <select id="category_id" class="block mt-1 w-full" name="category_id" required>
                                 <option value="" selected disabled>Pilih Kategori</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
