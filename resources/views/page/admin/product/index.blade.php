@@ -25,25 +25,22 @@
                                     No</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
-                                    Category</th>
+                                    Kategori</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
-                                    Name</th>
+                                    Nama</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
-                                    Description</th>
+                                    Deskripsi</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
-                                    Stock</th>
+                                    Stok</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
-                                    Image</th>
+                                    Gambar</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
-                                    Price</th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
-                                    Category ID</th>
+                                    Harga</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
                                     Action</th>
@@ -75,9 +72,6 @@
                                     <td
                                         class="px-6 py-4 text-center border-b border-gray-400 whitespace-nowrap text-sm text-gray-800">
                                         ${{ number_format($product->price, 2) }}</td>
-                                    <td
-                                        class="px-6 py-4 text-center border-b border-gray-400 whitespace-nowrap text-sm text-gray-800">
-                                        {{ $product->category_id }}</td>
                                     <td
                                         class="px-6 py-4 text-center border-b border-gray-400 whitespace-nowrap text-sm text-gray-800">
                                         <div class="flex justify-center gap-5">
