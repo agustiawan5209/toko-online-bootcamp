@@ -25,6 +25,9 @@
                                     No</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
+                                    Category</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
                                     Name</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-center text-xs border border-gray-400 font-medium text-gray-700 uppercase">
@@ -54,6 +57,9 @@
                                         {{ $loop->iteration }}</td>
                                     <td
                                         class="px-6 py-4 text-center border-b border-gray-400 whitespace-nowrap text-sm text-gray-800">
+                                        {{ $product->category->name }}</td>
+                                    <td
+                                        class="px-6 py-4 text-center border-b border-gray-400 whitespace-nowrap text-sm text-gray-800">
                                         {{ $product->name }}</td>
                                     <td
                                         class="px-6 py-4 text-center border-b border-gray-400 whitespace-nowrap text-sm text-gray-800">
@@ -63,7 +69,7 @@
                                         {{ $product->stock }}</td>
                                     <td
                                         class="px-6 py-4 text-center border-b border-gray-400 whitespace-nowrap text-sm text-gray-800">
-                                        <img src="{{ $product->image ? asset('public/storage/' . $product->image) : 'https://via.placeholder.com/150' }}"
+                                        <img src="{{ $product->image ? asset('storage/' . $product->image) : 'https://via.placeholder.com/150' }}"
                                             alt="{{ $product->name }}" class="w-16 h-16 object-cover">
                                     </td>
                                     <td

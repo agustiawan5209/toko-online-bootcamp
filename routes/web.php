@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WebPageController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WebPageController::class,'index'])->name('home');
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -63,3 +62,9 @@ Route::get('/cart', function () {
     $cartItems = [];
     return view('cart', compact('cartItems'));
 });
+
+
+Route::get('/about', [WebPageController::class,'about'])->name('about');
+Route::get('/product', [WebPageController::class,'product'])->name('product');
+Route::get('cart', [WebPageController::class,'cart'])->name('cart');
+
